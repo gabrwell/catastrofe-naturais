@@ -79,7 +79,6 @@ Prioridade: Baixa - Pode ser desligado em momentos críticos de economia.
 
 - O programa verifica se a memória foi alocada corretamente para evitar falhas de execução.
 - As prioridades são interpretadas e exibidas com mensagens explicativas.
-- O `getchar()` é utilizado para evitar problemas de leitura no buffer ao alternar entre `scanf` e `fgets`.
 
 ---
 
@@ -88,7 +87,6 @@ Prioridade: Baixa - Pode ser desligado em momentos críticos de economia.
 
 ## Comentários Finais
 
-- O código está comentado para facilitar o entendimento e a manutenção.
 - O programa pode ser usado como base para sistemas maiores de controle energético.
 
 ---
