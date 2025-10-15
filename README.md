@@ -1,92 +1,108 @@
-# Sistema de Cadastro de Dispositivos Elétricos
+# Projeto Final: Sistema de Gerenciamento Inteligente de Energia Residencial
 
-Este projeto consiste em um programa em C para cadastrar e exibir dispositivos elétricos, permitindo ao usuário informar o nome, consumo energético e prioridade de cada aparelho. O objetivo é oferecer uma base para controle e análise do consumo de energia, facilitando a priorização de dispositivos em situações de economia ou gerenciamento.
+## Integrantes do Grupo
 
----
+* **Gabriel Gibin Leoncio** - RM: 565462
+* **Rai Augusto Ribeiro** - RM: 562870
+* **Rafael do Nascimento Silva** – RM: 566263
+* **Pedro Henrique dos Santos Cardoso** - RM: 563268
+* **Pedro Henrique Lisboa** – RM: 565722
 
-## Funcionalidades
+## 📄 Descrição do Projeto
 
-- **Cadastro de Dispositivos:** Permite inserir o nome, consumo (em kWh) e prioridade de cada aparelho.
-- **Listagem dos Dispositivos:** Exibe todos os dispositivos cadastrados com seus dados e uma mensagem personalizada conforme a prioridade.
-- **Alocação Dinâmica:** O número de dispositivos é definido pelo usuário e a memória é alocada dinamicamente.
-- **Validação Básica:** Confere se a alocação de memória foi bem-sucedida.
+Este projeto, desenvolvido integralmente em **Linguagem C**, simula um sistema de gerenciamento inteligente de consumo de energia para uma residência. O programa permite que o usuário cadastre dinamicamente múltiplos dispositivos eletrônicos, especificando seu nome, consumo em kWh e nível de prioridade (Alta, Média ou Baixa).
 
----
+Com base em um limite de energia fornecido pelo usuário, o sistema utiliza um algoritmo de ordenação para organizar os dispositivos por prioridade e, em seguida, decide quais deles podem permanecer ligados sem exceder o teto de consumo. O principal objetivo do projeto é analisar e comparar a eficiência de três algoritmos de ordenação clássicos (**Bubble Sort**, **Selection Sort** e **Insertion Sort**) na resolução deste problema prático, medindo seu tempo de execução e número de operações.
 
-## Estrutura de Dados
+## 🚀 Evolução do Sistema ao Longo das Sprints
 
-Cada dispositivo é modelado como uma `struct`, com os seguintes campos:
+O projeto foi construído de forma incremental ao longo de quatro sprints, cada uma com objetivos específicos:
 
-```c
-typedef struct {
-    char nome[50];    // Nome do dispositivo (até 49 caracteres)
-    float consumo;    // Consumo estimado em kWh
-    int prioridade;   // 1 = Alta, 2 = Média, 3 = Baixa
-} Dispositivo;
-```
+* **Sprint 1: Estruturação e Cadastro Dinâmico**
+    * Criação da estrutura de dados (`struct`) para representar os dispositivos.
+    * Implementação do cadastro de múltiplos dispositivos utilizando alocação dinâmica de memória (`malloc` e `free`), permitindo flexibilidade ao usuário.
 
-Os dispositivos são armazenados em um vetor alocado dinamicamente, permitindo flexibilidade na quantidade de cadastros.
+* **Sprint 2: Lógica de Simulação Inteligente**
+    * Introdução da lógica de simulação de consumo, onde o sistema decide quais dispositivos ligar com base na energia disponível.
+    * Implementação do algoritmo **Bubble Sort** para ordenar os dispositivos por prioridade, garantindo que os mais essenciais sejam ativados primeiro.
 
----
+* **Sprint 3: Análise Comparativa de Algoritmos**
+    * Aprimoramento do sistema para análise de desempenho, com a adição do **Selection Sort**.
+    * Integração da biblioteca `<time.h>` para medir o tempo de execução e de contadores para registrar o número de comparações de cada algoritmo.
 
-## Exemplo de Uso
+* **Sprint 4: Consolidação e Entregável Final**
+    * Finalização do código com a adição do **Insertion Sort** para enriquecer a análise comparativa.
+    * Consolidação de todas as funcionalidades em um programa único e robusto.
+    * Produção da documentação final, incluindo este README, um relatório técnico e um vídeo de apresentação.
 
-### Cadastro
+## ✨ Funcionalidades
 
-Ao iniciar o programa, o usuário é questionado sobre quantos dispositivos deseja cadastrar. Para cada dispositivo, são solicitados:
+* Cadastro dinâmico de um número ilimitado de dispositivos.
+* Simulação de consumo de energia com base em um limite pré-definido.
+* Menu interativo para escolha entre 3 algoritmos de ordenação: Bubble Sort, Selection Sort e Insertion Sort.
+* Análise de desempenho em tempo real, exibindo o tempo de execução e o número de comparações do algoritmo escolhido.
+* Relatório final claro sobre o status (Ligado/Desligado) de cada dispositivo e o consumo total de energia.
 
-- Nome
-- Consumo estimado (kWh)
-- Prioridade (1 = Alta, 2 = Média, 3 = Baixa)
+## 🛠️ Tecnologias Utilizadas
 
-#### Exemplo:
+* **Linguagem C** (Padrão C99/C11)
+* Bibliotecas Padrão: `stdio.h`, `stdlib.h`, `string.h`, `time.h`
 
-```
-Quantos dispositivos deseja cadastrar? 2
-Cadastro do dispositivo 1:
-Nome: Geladeira
-Consumo estimado (kWh): 30
-Prioridade (1 = Alta, 2 = Média, 3 = Baixa): 1
+## ⚙️ Instruções de Compilação e Execução
 
-Cadastro do dispositivo 2:
-Nome: Ventilador
-Consumo estimado (kWh): 5
-Prioridade (1 = Alta, 2 = Média, 3 = Baixa): 3
-```
+### Pré-requisitos
 
----
+Para compilar e executar este projeto, você precisará de um compilador C. O **GCC** é o mais comum.
+* **No Linux/macOS:** Geralmente já vem instalado ou pode ser instalado via gerenciador de pacotes (`sudo apt-get install gcc`).
+* **No Windows:** Recomenda-se a instalação do **MinGW-w64**.
 
-### Listagem
+### Compilação
 
-Após o cadastro, todos os dispositivos são exibidos com suas informações e recomendações de uso:
+1.  Abra o seu terminal ou prompt de comando.
+2.  Navegue até o diretório onde você salvou o arquivo `.c` do projeto.
+3.  Execute o seguinte comando para compilar o programa:
 
-```
-Lista de Dispositivos Cadastrados:
-Dispositivo 1:
-Nome: Geladeira
-Consumo: 30.00 kWh
-Prioridade: Alta - Dispositivo essencial! Controle rigoroso sugerido.
+    ```bash
+    gcc nome_do_arquivo.c -o simulador_energia
+    ```
+    *(Substitua `nome_do_arquivo.c` pelo nome real do seu arquivo fonte)*.
 
-Dispositivo 2:
-Nome: Ventilador
-Consumo: 5.00 kWh
-Prioridade: Baixa - Pode ser desligado em momentos críticos de economia.
-```
+### Execução
 
----
+1.  Após a compilação, um arquivo executável será criado. Para executá-lo, utilize o comando:
 
-## Validação e Tratamento
+    * No **Linux/macOS**:
+        ```bash
+        ./simulador_energia
+        ```
+    * No **Windows**:
+        ```bash
+        simulador_energia.exe
+        ```
+2.  Siga as instruções interativas no console para usar o programa.
 
-- O programa verifica se a memória foi alocada corretamente para evitar falhas de execução.
-- As prioridades são interpretadas e exibidas com mensagens explicativas.
+## 📊 Resultados Comparativos
 
----
+Para obter os seguintes resultados, o programa foi executado com um conjunto de dispositivos cujas prioridades foram geradas em ordem aleatória, simulando um cenário de caso de uso comum.
 
+***Nota: Substitua os valores entre colchetes `[*...]` pelos resultados que você obteve ao executar o programa.***
 
----
+### Cenário de Teste 1: 500 Dispositivos
 
-## Comentários Finais
+| Algoritmo       | Tempo de Execução (s)   | Número de Comparações |
+| :-------------- | :---------------------- | :-------------------- |
+| **Bubble Sort** | `*[insira o tempo aqui]*`   | `*[124750]*`            |
+| **Selection Sort**| `*[insira o tempo aqui]*`   | `*[124750]*`            |
+| **Insertion Sort**| `*[insira o tempo aqui]*`   | `*[insira as comps aqui]*` |
 
-- O programa pode ser usado como base para sistemas maiores de controle energético.
+### Cenário de Teste 2: 5000 Dispositivos
+
+| Algoritmo       | Tempo de Execução (s)   | Número de Comparações  |
+| :-------------- | :---------------------- | :--------------------- |
+| **Bubble Sort** | `*[insira o tempo aqui]*`   | `*[12497500]*`           |
+| **Selection Sort**| `*[insira o tempo aqui]*`   | `*[12497500]*`           |
+| **Insertion Sort**| `*[insira o tempo aqui]*`   | `*[insira as comps aqui]*`  |
+
+*(O número de comparações para Bubble e Selection Sort é fixo e dado por `n(n-1)/2`. Para o Insertion Sort, este valor varia dependendo da ordem inicial dos dados).*
 
 ---
